@@ -1,71 +1,61 @@
 package com.gonzalez.entities;
 
-import java.sql.Date;
 
-import javax.persistence.*;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Entity
 public class Item {
 	
+	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@Column(length = 20)
-	private String partNumber;
-	@Column(length = 100)
-	private String partName;
-	private String currentLocation;
-	
+	private String part;
+
+
+	private String name;
+	private String location;
 	private String description;
 	
 	protected Item()
 	{
 		
 	}
-
-	public Item(String partNumber, String partName,  String currentLocation, String description) {
+	
+	public Item(String part, String name, String location, String description) {
 		super();
-		this.partNumber = partNumber;
-		this.partName = partName;
-		
-		this.currentLocation = currentLocation;
+		this.part = part;
+		this.name = name;
+		this.location = location;
 		this.description = description;
 	}
 
-	public long getId() {
-		return id;
+	public String getPart() {
+		return part;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPart(String part) {
+		this.part = part;
 	}
 
-	public String getPartNumber() {
-		return partNumber;
+	public String getName() {
+		return name;
 	}
 
-	public void setPartNumber(String partNumber) {
-		this.partNumber = partNumber;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPartName() {
-		return partName;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setPartName(String partName) {
-		this.partName = partName;
-	}
-
-
-	public String getCurrentLocation() {
-		return currentLocation;
-	}
-
-	public void setCurrentLocation(String currentLocation) {
-		this.currentLocation = currentLocation;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public String getDescription() {
@@ -76,16 +66,15 @@ public class Item {
 		this.description = description;
 	}
 
-	
-	
-		
 	@Override
 	public String toString() {
-		return "Item [partNumber=" + partNumber + ", partName=" + partName + ", dateReceive=" 
-				+ ", dateExpiration="  + ", currentLocation=" + currentLocation + ", description="
+		return "Item [id=" + id + ", part=" + part + ", name=" + name + ", location=" + location + ", description="
 				+ description + "]";
 	}
-		
+
+	
+	
+	
 	
 
 }

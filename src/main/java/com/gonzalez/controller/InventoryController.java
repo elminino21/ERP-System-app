@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gonzalez.entities.Item;
@@ -23,7 +24,7 @@ public class InventoryController {
 	public String itemMaster(Model model, @RequestParam(defaultValue= "0") int page)
 	{
 		
-		//model.addAttribute("data", itemRepository.find   );
+	model.addAttribute("data", itemRepository.findAll( PageRequest.of(page, 4))   );
 		return "index";
 	}
 	

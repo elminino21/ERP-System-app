@@ -15,19 +15,18 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Part #</th>
-						<th>Part Name</th>
-						<th>DOR</th>
-						<th>DOE</th>
+						<th>Part</th>
+						<th>Name</th>
 						<th>Location</th>
+						<th>Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each=" item :${data.content}">
-						<td th:text="${item.partNumber}"></td>
-						<td th:text="${item.dateReceive}"></td>
-						<td th:text="${item.dateExpiration}"></td>
-						<td th:text="${item.currentLocation}"></td>
+						<td th:text="${item.part}"></td>
+						<td th:text="${item.name}"></td>
+						<td th:text="${item.locaction}"></td>
+						<td th:text="${item.Description}"></td>
 						
 					</tr>
 				</tbody>

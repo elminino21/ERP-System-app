@@ -4,20 +4,18 @@ package com.gonzalez.repository;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
+
 import com.gonzalez.entities.Item;
 
 
-@Repository
-public interface ItemRepository extends CrudRepository< Item, Long>{
+public interface ItemRepository extends PagingAndSortingRepository< Item, Long>{
 	
 	
 	
-	List<Item>findByPartNumber(String t);
+	List<Item>findByPart(String number);
 
-	List<Item>findByPartNumberOrderByPartNumber(String t);
-	long count();
-	
 
 
 }
