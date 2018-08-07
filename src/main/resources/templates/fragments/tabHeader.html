@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="head :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div th:fragment="togglable"> 
+		<div  id="London" class="tabcontent">
+  <h3>Inventory</h3>
+
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Transfer</h3>
+  
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Adjustments</h3>
+  
+</div>
+
+<div id="Oslo" class="tabcontent">
+  <h3>Oslo</h3>
+  <p>Oslo is the capital of Norway.</p>
+</div>
+
+<button class="tablink" onclick="openCity('London', this, 'blue')" id="defaultOpen">Inventory</button>
+<button class="tablink" onclick="openCity('Paris', this, 'blue')">Transfer</button>
+<button class="tablink" onclick="openCity('Tokyo', this, 'blue')">Adjustments</button>
+
+
+</div>
+	
+
+</body>
+</html>
