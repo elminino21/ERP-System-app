@@ -33,8 +33,27 @@
 <div th:replace="fragments/tabHeader :: togglable"> </div>
 
 
+<!-- ------ begin test  block -->
+			<div class="container">
+			
+			
+			
+			<div th:replace="fragments/SearchBar :: SearchToggle"> </div>
+			
+			
+			
+			
+			
+			</div>
+			
+<!-- ------ end test  block -->
+
+
+
+
 <div class="container"> 
-	<button class="btn btn-success addbtn">Add</button>
+<!-- bottong botto -->
+Add new item <button class="btn btn-success addbtn">+</button>
 <div class="card">
 	
 	
@@ -45,9 +64,11 @@
 				<thead>
 					<tr>
 						<th >Part</th>
-						<th>Name</th>
-						<th>Location</th>
 						<th>Description</th>
+						<th>Location</th>
+						<th>DOM</th>
+						<th>DOE</th>
+						<th>S/L%</th>
 					</tr>
 				</thead>
 				<tbody>

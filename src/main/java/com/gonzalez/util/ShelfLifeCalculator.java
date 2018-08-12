@@ -17,12 +17,14 @@ public class ShelfLifeCalculator {
 	
 	
 	/**
-	 * 
+	 *  
 	 * @return
 	 */
 	private long differenceBetweenTwoDays(String DOM, String DOE )
 	{
-		
+		/*
+		 * dates should be on the format of 06/24/2017"
+		 */
 
 		try {
 			
@@ -41,6 +43,23 @@ public class ShelfLifeCalculator {
 	}
 	
 
+	
+	
+	private int dateAsPercentage()
+	{
+		int percent = 0;
+		
+		return percent;
+	}
+	
+	
+	public int getRemainShelfLife()
+	{
+		int remainDay = 0;
+		
+		
+		return remainDay;
+	}
 
 	
 

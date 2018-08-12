@@ -4,23 +4,25 @@
 
 $(document).ready(function(){
 	
-
+	/**
+	 * data picker event
+	 */
 	$('.datepicker').datepicker();
 	
 	
-	
+	// add new item event
 	$('.addbtn').on('click', function(event){
 		event.preventDefault();
 		
 		var text = $(this).text();
-		if(text=='Add'){
+		if(text=='+')
+		{
 			
 			$('.modalForm #part').val('');
 			$('.modalForm #Name').val('');
 			$('.modalForm #Location').val('');
 			$('.modalForm #Description').val('');
-			$('.modalForm #exampleModal').modal();
-			
+			$('.modalForm #exampleModal').modal();	
 			
 		}
 		
