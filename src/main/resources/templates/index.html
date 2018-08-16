@@ -68,15 +68,20 @@ Add new item <button class="btn btn-success addbtn">+</button>
 						<th>Location</th>
 						<th>DOM</th>
 						<th>DOE</th>
+						<th>Trans.Date</th>
 						<th>S/L%</th>
+						<th>User</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each=" item :${data.content}">
 						<td th:text="${item.part}"></td>
-						<td th:text="${item.name}"></td>
-						<td th:text="${item.location}"></td>
 						<td th:text="${item.description}"></td>
+						<td th:text="${item.location}"></td>
+						<td th:text="${item.DOM}"></td>
+						<td th:text="${item.DOE}"></td>
+						<td th:text="${item.transationDate}"></td>
+						
 						
 					</tr>
 				</tbody>

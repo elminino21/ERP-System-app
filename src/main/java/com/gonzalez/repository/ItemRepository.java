@@ -14,7 +14,6 @@ public interface ItemRepository extends PagingAndSortingRepository< Item, Long>{
 	
 	
 	
-	List<Item>findByPart(String number);
 
 
 
