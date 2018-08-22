@@ -1,6 +1,8 @@
 package com.gonzalez.util;
 
 import java.time.Duration;
+import java.time.LocalDate;
+
 import static java.time.temporal.ChronoUnit.DAYS;
 import static org.junit.Assert.assertEquals;
 
@@ -12,66 +14,70 @@ public class TestShelfLifeCalculator {
 
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	ShelfLifeCalculator life = new ShelfLifeCalculator();
-	/**
-	 * assets 1 day
-	 */
+	
+	
 	@Test
 	public void dateDiferenceByDate1()
 	{	
-				long daysBetween= 0;
+				double daysBetween= 0;
 				try {
-					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "12/11/2018");
+					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "11/12/2018");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				assertEquals(daysBetween, 1);
+				
+				System.out.println(daysBetween);
+				
+				assertEquals(daysBetween, 1, 0);
 	}
 	
 	
 	@Test
-	public void dateDiferenceByDate2()
+	public void dateDiferenceByDate2() 
 	{	
-		long daysBetween= 0;
-				try {
-					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "11/11/2019");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				assertEquals(daysBetween, 365);
+		double daysBetween= 0;
+			
+					try {
+						daysBetween = life.differenceBetweenTwoDays( "11/11/2018", "11/11/2019");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			
+				System.out.println(daysBetween);
+				assertEquals(daysBetween, 365, 0);
 	}
 	
 	
 	@Test
 	public void dateDiferenceByDate3()
 	{	
-		long daysBetween= 0;
+		double daysBetween= 0;
 				try {
-					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "11/11/2018");
+					daysBetween = life.differenceBetweenTwoDays( "11/11/2018", "11/11/2018");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				assertEquals(daysBetween, 0);
+				assertEquals(daysBetween, 0, 0);
 	}
 	
 	
 	@Test
 	public void dateDiferenceByDate4()
 	{	
-		long daysBetween= 0;
+		double daysBetween= 0;
 				try {
-					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "10/11/2018");
+					daysBetween = life.differenceBetweenTwoDays( "11/11/2018", "11/10/2018");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				assertEquals(daysBetween, -1);
+				assertEquals(daysBetween, -1, 0);
 	}
 	
 	
@@ -79,15 +85,15 @@ public class TestShelfLifeCalculator {
 	@Test
 	public void dateDiferenceByDate5()
 	{	
-		long daysBetween= 0;
+		double daysBetween= 0;
 				try {
-					daysBetween = life.differenceBetweenTwoDays("11/11/2018", "9/11/2018");
+					daysBetween = life.differenceBetweenTwoDays( "11/11/2018", "11/09/2018");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				assertEquals(daysBetween, -2);
+				assertEquals(daysBetween, -2, 0);
 	}
 	
 	

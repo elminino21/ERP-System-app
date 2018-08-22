@@ -3,12 +3,18 @@ package com.gonzalez.entities;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.gonzalez.util.ShelfLifeCalculator;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,24 +32,40 @@ public class Item {
 	private String description;	
 	private String location;
 	@Column(name="DOM")
+
 	private LocalDate DOM;
 	@Column(name="DOE")
 	private LocalDate DOE;
 	private LocalDate transationDate;
+	private LocalTime transactionTime;
+	@Column(name="life")
+	private double remainShelfLife;
 	
+	
+
+
 	public Item() {
 	}
 
 	
-	public Item(String part, String location, String description, LocalDate dOM, LocalDate dOE,
-			LocalDate transationDate) {
+	public Item(String part, String location, String description, String dOM, String dOE) {
 		super();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		ShelfLifeCalculator cal = new ShelfLifeCalculator();
 		this.part = part;
 		this.location = location;
 		this.description = description;
-		DOM = dOM;
-		DOE = dOE;
-		this.transationDate = transationDate;
+		DOM = LocalDate.parse(dOM, formatter);
+		DOE = LocalDate.parse(dOE, formatter);
+		this.transationDate = LocalDate.now();
+		this.transactionTime = LocalTime.now();
+		
+		try {
+			remainShelfLife = (double)(cal.differenceBetweenTwoDays(LocalDate.now().format(formatter).toString(), dOE) / cal.differenceBetweenTwoDays(dOM, dOE))*100;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public String getPart() {
@@ -99,6 +121,24 @@ public class Item {
 	}
 	
 	
+
+	public double getRemainShelfLife() {
+		return remainShelfLife;
+	}
+	
+	
+	public void setRemainShelfLife(double remainShelfLife) {
+		this.remainShelfLife = remainShelfLife;
+	}
+	
+	public LocalTime getTransactionTime() {
+		return transactionTime;
+	}
+
+
+	public void setTransactionTime(LocalTime transactionTime) {
+		this.transactionTime = transactionTime;
+	}
 	
 	
 

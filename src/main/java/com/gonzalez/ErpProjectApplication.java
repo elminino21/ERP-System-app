@@ -27,8 +27,15 @@ public class ErpProjectApplication{
 	CommandLineRunner initData(ItemRepository items){
 		
 		return args ->{
-			items.save(new Item( "RA-15465496878", "TOP SHELF 01", "rubber", LocalDate.parse("11/11/2018", formatter), LocalDate.parse("11/11/2018", formatter),
-					LocalDate.parse("11/11/2018", formatter)));
+			items.save(new Item( 
+					"RA-15465496878", "TOP SHELF 01", "rubber", "11/11/2016", "11/11/2035"
+					
+					
+					
+					)
+					
+					
+					);
 		};
 		
 	}

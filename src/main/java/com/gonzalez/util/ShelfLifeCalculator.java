@@ -5,6 +5,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.UnsupportedTemporalTypeException;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +17,7 @@ public class ShelfLifeCalculator {
 	
 	
 	
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	
 	
 	
@@ -26,7 +27,7 @@ public class ShelfLifeCalculator {
 	 * @throws Exception 
 	 * 
 	 */
-	public long differenceBetweenTwoDays(String oldDate, String moreResentDate ) throws Exception
+	public double differenceBetweenTwoDays(String oldDate, String moreResentDate ) throws Exception
 	{
 		/*
 		 * dates should be on the format of 06/24/2017"
@@ -34,16 +35,17 @@ public class ShelfLifeCalculator {
 		if(oldDate == null ||  moreResentDate == null)
 		{
 			
-			 throw new Exception();
+			 throw new UnsupportedTemporalTypeException("The enters dates are not comparable with the localDate class");
 		}
 			
-			
-			
+		
+		System.out.println(oldDate);	
+		System.out.println(moreResentDate);	
 		LocalDate oldDatea = LocalDate.parse(oldDate, formatter);
-		LocalDate newDate = LocalDate.parse(moreResentDate, formatter);
+		LocalDate newDate =  LocalDate.parse(moreResentDate, formatter);
     	
 		
-		long diff = DAYS.between(oldDatea, newDate);
+		double diff = DAYS.between(oldDatea, newDate);
 		
 		
 		return diff;

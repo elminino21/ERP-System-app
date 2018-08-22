@@ -19,9 +19,10 @@ $(document).ready(function(){
 		{
 			
 			$('.modalForm #part').val('');
-			$('.modalForm #Name').val('');
 			$('.modalForm #Location').val('');
 			$('.modalForm #Description').val('');
+			$('.modalForm #DOM').val('');
+			$('.modalForm #DOE').val('');
 			$('.modalForm #exampleModal').modal();	
 			
 		}
@@ -35,7 +36,7 @@ $(document).ready(function(){
 	document.getElementById("defaultOpen").click();
 
 
-	var date_input=$('input[name="date"]'); //our date input has the name "date"
+	var date_input=$('input[name="date1"]'); //our date input has the name "date"
     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     var options={
       format: 'mm/dd/yyyy',
@@ -45,7 +46,16 @@ $(document).ready(function(){
     };
     date_input.datepicker(options);
 
-	
+    var date_input=$('input[name="date2"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    var options={
+      format: 'mm/dd/yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    };
+    date_input.datepicker(options);
+
 	
 });
 

@@ -69,6 +69,7 @@ Add new item <button class="btn btn-success addbtn">+</button>
 						<th>DOM</th>
 						<th>DOE</th>
 						<th>Trans.Date</th>
+						<th>Quantity</th>
 						<th>S/L%</th>
 						<th>User</th>
 					</tr>
@@ -81,6 +82,8 @@ Add new item <button class="btn btn-success addbtn">+</button>
 						<td th:text="${item.DOM}"></td>
 						<td th:text="${item.DOE}"></td>
 						<td th:text="${item.transationDate}"></td>
+						<!--  <td th:text="${item.remainShelfLife}"></td> -->
+					<td th:text="${#numbers.formatDecimal(item.remainShelfLife,2,2)}"></td>
 						
 						
 					</tr>
