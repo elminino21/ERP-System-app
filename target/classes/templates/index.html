@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">
+
+<body>
+
+
+
+
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+ 
+ 
+ 
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a class="side-btn" href="#">Inventory</a>
+  <a class="side-btn" href="#">Sales</a>
+  <a class="side-btn" href="#">Purchasing</a>
+  <a class="side-btn" href="#">Bill of Material</a>
+    <a class="side-btn" href="#">Recievable</a>
+    <a class="side-btn" href="#">Forcasting</a>
+
+</div>
+
+<div style="background-color:blue; padding: 20px 0 0 32px;">     
+<span style="font-size: 50px;" class="nav-icon" onclick="openNav()">&#9776; </span>
+
+
+ </div>
+
+<div th:replace="fragments/tabHeader :: togglable"> </div>
+
+
+<!-- ------ begin test  block -->
+			<div class="container">
+			
+			
+			
+			<div th:replace="fragments/SearchBar :: SearchToggle"> </div>
+			
+			
+			
+			
+			
+			</div>
+			
+<!-- ------ end test  block -->
+
+
+
+
+<div class="container"> 
+<!-- bottong botto -->
+Add new item <button class="btn btn-success addbtn">+</button>
+<div class="card">
+	
+	
+	
+	
+		<div class="card-block">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th >Part</th>
+						<th>Description</th>
+						<th>Location</th>
+						<th>DOM</th>
+						<th>DOE</th>
+						<th>Trans.Date</th>
+						<th>Quantity</th>
+						<th>S/L%</th>
+						<th>User</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each=" item :${data.content}">
+						<td th:text="${item.part}"></td>
+						<td th:text="${item.description}"></td>
+						<td th:text="${item.location}"></td>
+						<td th:text="${item.DOM}"></td>
+						<td th:text="${item.DOE}"></td>
+						<td th:text="${item.transationDate}"></td>
+						<!--  <td th:text="${item.remainShelfLife}"></td> -->
+					<td th:text="${#numbers.formatDecimal(item.remainShelfLife,2,2)}"></td>
+						
+						
+					</tr>
+				</tbody>
+			</table>
+			<hr/>
+				<ul class="nav nav-pills">
+                 	<li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+                                        <a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+                                        th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                 </ul>
+				
+			
+		</div>
+		
+		<div th:replace="fragments/modalAddItem :: modal">
+		
+	</div>
+ </div>
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+</div>
+
+
+
+
+</body>
+</html>

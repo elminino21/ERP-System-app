@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th=“http://www.thymeleaf.org”>
+<head th:replace="head :: head">
+</head>
+<body>
+	
+	<div th:fragment="modal">
+		<div  class="modalForm">
+<form th:action="@{/save}" th:object="${item}"  method="post">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new inventory item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <div class="modal-body">
+        
+          <div class="form-group">
+            <label for="part" class="col-form-label">Part number:</label>
+            <input type="text" class="form-control" id="part" name="part" value="">
+          </div>
+          
+          <div class="form-group">
+            <label for="Name" class="col-form-label">Part Name:</label>
+            <input type="text" class="form-control" id="description" name="description" value="">
+          </div>
+          
+          <div class="form-group">
+            <label for="Location" class="col-form-label">Location:</label>
+            <input type="text" class="form-control" id="Location" name="Location" value="">
+          </div>
+          
+           <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="DOM">DOM</label>
+        <input class="form-control" id="DOM" name="date1" placeholder="MM/DD/YYYY" type="text"/>
+        </div>
+        
+        <div class="form-group"> <!-- Date input -->
+        <label class="control-label" for="DOE">DOE</label>
+         <input class="form-control" id="DOE" name="date2" placeholder="MM/DD/YYYY" type="text" ></input>
+      </div>
+          
+        
+          
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+
+   
+
+      
+    </div>
+  </div>    
+ </div>
+</div>
+
+           
+          
+
+         
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="save" />
+      </div>
+    </div>
+  </div>
+</div>
+	</form>
+	</div>
+	 </div>
+
+</body>
+</html>
