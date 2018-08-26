@@ -8,12 +8,20 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.format.DateTimeFormatter;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestShelfLifeCalculator {
 
-	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	ShelfLifeCalculator life = new ShelfLifeCalculator();
+	DateTimeFormatter formatter;
+	ShelfLifeCalculator life ;
+	
+		@Before
+	public void preTest() {
+		 formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		ShelfLifeCalculator life = new ShelfLifeCalculator();
+	}
+
 	
 	
 	@Test

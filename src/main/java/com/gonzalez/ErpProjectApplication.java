@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import com.gonzalez.entities.Item;
 import com.gonzalez.repository.ItemRepository;
@@ -16,7 +20,7 @@ import com.gonzalez.repository.ItemRepository;
 @SpringBootApplication
 public class ErpProjectApplication{
 
-	private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+
 
 	public static void main(String[] args) { SpringApplication.run(ErpProjectApplication.class, args);}
 
@@ -39,9 +43,7 @@ public class ErpProjectApplication{
 		};
 		
 	}
-	
 
-	
 			
 		
 

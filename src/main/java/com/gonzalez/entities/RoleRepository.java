@@ -1,5 +1,5 @@
 package com.gonzalez.entities;
 
-public interface IEmployee {
+public class RoleRepository {
 
 }
