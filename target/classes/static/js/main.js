@@ -29,6 +29,9 @@ $(document).ready(function(){
 		
 		
 	});
+	/**
+	 * ready event done
+	 */
 	
 	$('.dropdown-toggle').dropdown();
 

@@ -60,13 +60,8 @@ public class Item {
 		DOE = LocalDate.parse(dOE, formatter);
 		this.transationDate = LocalDate.now();
 		this.transactionTime = LocalTime.now();
+		remainShelfLife = cal.remainingTimeBetweenDates(dOM, dOE);
 		
-		try {
-			remainShelfLife = (double)(cal.differenceBetweenTwoDays(LocalDate.now().format(formatter).toString(), dOE) / cal.differenceBetweenTwoDays(dOM, dOE))*100;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public String getPart() {

@@ -31,13 +31,6 @@ public class RegistrationController {
 	}
 	
 	
-	@RequestMapping(value="/registration", method = RequestMethod.POST)
-	public ModelAndView registerAccount(@ModelAttribute("user") UserDto newUser, BindingResult result)
-	{
-		return null;
-		
-	}
-	
 	
 	
 	

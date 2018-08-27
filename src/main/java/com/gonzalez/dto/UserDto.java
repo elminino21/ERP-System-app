@@ -29,8 +29,8 @@ public class UserDto {
 	@NotNull
 	@NotEmpty
 	private String lastName;
-	@NotNull
 	@NotEmpty
+	@Size(max = 1)
 	private char middleIni;
 	@NotNull
 	@NotEmpty
