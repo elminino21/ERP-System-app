@@ -32,11 +32,7 @@ public class ErpProjectApplication{
 		
 		return args ->{
 			items.save(new Item( 
-					"RA-15465496878", "TOP SHELF 01", "rubber", "11/11/2016", "11/11/2035"
-					
-					
-					
-					)
+					"RA-15465496878", "TOP SHELF 01", "rubber", "11/11/2016", "11/11/2035")
 					
 					
 					);
