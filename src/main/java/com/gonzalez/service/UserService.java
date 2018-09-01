@@ -41,10 +41,34 @@ public class UserService implements IUserSevirce {
 
 	
 	@Override
-	public User registerNewUserAccount(UserDto accountDto) throws UserAlreadyExistException {
-		// TODO Auto-generated method stub
+	public User registerNewUserAccount(UserDto userDto) throws UserAlreadyExistException {
+		if(emailExit(userDto.getEmail()))
+		{
+			throw new UserAlreadyExistException("The email "+ userDto.getEmail() + " is already register with an account");
+		}
+		
+		
+		User user = userDtoTouser(userDto);
+		
+		
+		
+		userRepository.save(user);
 		return null;
 	}
+	
+	private User userDtoTouser(UserDto userDto)
+	{
+		User user = new User();
+		user.setFirstName(userDto.getFirstName());
+		user.setLastName(userDto.getLastName());
+		user.setMiddleIni(userDto.getMiddleIni());
+		user.setDepartment(userDto.getDepartment());
+		user.setFunction(userDto.getFunction());
+		
+		return user;
+	}
+
+	
 
 	@Override
 	public User getUser(String verificationToken) {
@@ -147,5 +171,11 @@ public class UserService implements IUserSevirce {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+private boolean emailExit(String email) {
+		
+		return userRepository.findByEmail(email) != null;
+	}
+	
 
 }

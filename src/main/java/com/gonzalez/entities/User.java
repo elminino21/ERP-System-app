@@ -31,7 +31,7 @@ public class User {
 	
 	private String lastName;
 
-	private char middleIni;
+	private String middleIni;
 	@Column(length = 60)
 	private String password;
 	

@@ -1,33 +1,35 @@
 package com.gonzalez.security.formvalidator;
 
 import java.lang.annotation.Annotation;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
-public class EmailValidator implements ValidEmail{
 
-	@Override
-	public Class<? extends Annotation> annotationType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+public class EmailValidator implements ConstraintValidator< ValidEmail, String >{
+	
+	
+	private Pattern pattern;
+    private Matcher matcher;
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	
 	@Override
-	public String message() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void initialize(final ValidEmail constraintAnnotation) {
+    }
 
-	@Override
-	public Class<?>[] groups() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 @Override
+	    public boolean isValid(final String username, final ConstraintValidatorContext context) {
+	        return (validateEmail(username));
+	    }
 
-	@Override
-	public Class<? extends Payload>[] payload() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    private boolean validateEmail(final String email) {
+	        pattern = Pattern.compile(EMAIL_PATTERN);
+	        matcher = pattern.matcher(email);
+	        return matcher.matches();
+	    }
 
 }

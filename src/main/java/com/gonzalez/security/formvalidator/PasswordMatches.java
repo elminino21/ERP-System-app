@@ -1,6 +1,7 @@
 package com.gonzalez.security.formvalidator;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
@@ -8,12 +9,18 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE}) 
+@Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = EmailValidator.class)
+@Constraint(validatedBy = PasswordMatchesValidator.class)
 @Documented
-public @interface ValidEmail {   
-    String message() default "Invalid email";
-    Class<?>[] groups() default {}; 
+public @interface PasswordMatches {
+	
+	String message() default "Passwords don't match";
+
+    Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
+
 }
+

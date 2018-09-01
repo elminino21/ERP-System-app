@@ -10,6 +10,9 @@ import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
 
+import com.gonzalez.security.formvalidator.PasswordMatches;
+import com.gonzalez.security.formvalidator.ValidEmail;
+
 import lombok.Data;
 /**
  * classe is use to optain data from the model and transfer it to the a user class.
@@ -17,11 +20,13 @@ import lombok.Data;
  *
  */
 @Data
+@PasswordMatches
 public class UserDto {
+	
 	
 	@NotNull
 	@NotEmpty
-	@Size(min = 5)
+	@Size(min = 5, message = "User name needs to be at least 5 digit long")
 	private String userID;
 	@NotNull
 	@NotEmpty
@@ -31,7 +36,7 @@ public class UserDto {
 	private String lastName;
 	@NotEmpty
 	@Size(max = 1)
-	private char middleIni;
+	private String middleIni;
 	@NotNull
 	@NotEmpty
 	@Size(min = 6)
@@ -40,9 +45,11 @@ public class UserDto {
 	@NotEmpty
 	private String matchingPassword;
 	@NotNull
+	@ValidEmail
 	@NotEmpty
 	private String email;
 	@NotNull
+	@ValidEmail
 	@NotEmpty
 	private String matchingEmail;
 	@NotNull
