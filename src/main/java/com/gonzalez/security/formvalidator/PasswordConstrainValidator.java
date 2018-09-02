@@ -19,6 +19,8 @@ import org.passay.SpecialCharacterRule;
 import org.passay.UppercaseCharacterRule;
 import org.passay.WhitespaceRule;
 
+import com.google.common.base.Joiner;
+
 
 
 public class PasswordConstrainValidator implements ConstraintValidator<ValidPassword, String>{
@@ -34,14 +36,20 @@ public class PasswordConstrainValidator implements ConstraintValidator<ValidPass
 	public boolean isValid(final String password,final ConstraintValidatorContext context) {
 		final PasswordValidator validator = new PasswordValidator( setPasswordRules());
 	        final RuleResult result = validator.validate(new PasswordData(password));
-
-		
-		
-		
-		return false;
+	        if (result.isValid()) 
+	        {
+	            return true;
+	        }
+	        context.disableDefaultConstraintViolation();
+	        context.buildConstraintViolationWithTemplate(Joiner.on(",").join(validator.getMessages(result))).addConstraintViolation();
+	        return false;
 	}
 	
 	
+	/**
+	 * return a list or rules to be use by is valid
+	 * @return
+	 */
 	
 	private List<Rule> setPasswordRules()
 	{
@@ -57,5 +65,4 @@ public class PasswordConstrainValidator implements ConstraintValidator<ValidPass
 	}
 	
 	
-
 }
