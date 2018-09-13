@@ -1,18 +1,21 @@
 package com.gonzalez.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gonzalez.dto.UserDto;
 import com.gonzalez.entities.PasswordReset;
 import com.gonzalez.entities.User;
 import com.gonzalez.entities.Verification;
+import com.gonzalez.repository.RoleRepository;
 import com.gonzalez.repository.UserRepository;
 import com.gonzalez.repository.ValidationRepository;
 import com.gonzalez.web.error.UserAlreadyExistException;
@@ -28,6 +31,10 @@ public class UserService implements IUserSevirce {
 	
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	@Autowired
 	private ValidationRepository validationRepo;
@@ -36,7 +43,6 @@ public class UserService implements IUserSevirce {
 	 public static final String TOKEN_INVALID = "invalidToken";
 	 public static final String TOKEN_EXPIRED = "expired";
 	 public static final String TOKEN_VALID = "valid";
-     public static String QR_PREFIX = "https://chart.googleapis.com/chart?chs=200x200&chld=M%%7C0&cht=qr&chl=";
 	 public static String APP_NAME = "ERP System";
 
 	
@@ -53,7 +59,7 @@ public class UserService implements IUserSevirce {
 		
 		
 		userRepository.save(user);
-		return null;
+		return user;
 	}
 	
 	private User userDtoTouser(UserDto userDto)
@@ -64,9 +70,17 @@ public class UserService implements IUserSevirce {
 		user.setMiddleIni(userDto.getMiddleIni());
 		user.setDepartment(userDto.getDepartment());
 		user.setFunction(userDto.getFunction());
+		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+		user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")  ));
 		
 		return user;
 	}
+	
+private boolean emailExit(String email) {
+		
+		return userRepository.findByEmail(email) != null;
+	}
+	
 
 	
 
@@ -154,17 +168,6 @@ public class UserService implements IUserSevirce {
 		return null;
 	}
 
-	@Override
-	public String generateQRUrl(User user) throws UnsupportedEncodingException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User updateUser2FA(boolean use2fa) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<String> getUsersFromSessionRegistry() {
@@ -172,10 +175,6 @@ public class UserService implements IUserSevirce {
 		return null;
 	}
 	
-private boolean emailExit(String email) {
-		
-		return userRepository.findByEmail(email) != null;
-	}
-	
+
 
 }
